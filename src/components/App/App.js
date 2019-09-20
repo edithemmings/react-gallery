@@ -1,7 +1,42 @@
 import React, { Component } from 'react';
 import './App.css';
+import GalleryList from '../GalleryList/GalleryList'
+import axios from 'axios';
 
 class App extends Component {
+
+  state = {
+    photoList: [],
+    photo: {
+      id: 0,
+      path: '',
+      description: '',
+      likes: 0
+    }
+  }
+
+  componentDidMount = () => {
+    this.getImages();
+  }
+
+  getImages = () => {
+    axios.get('/gallery')
+    .then((response) => {
+      response.data.forEach((photo) => {
+        this.setState({
+          ...this.state,
+          photoList: [...this.state.photoList, photo]
+        })
+      })
+      console.log(this.state);
+    })
+    .catch((error) => {
+      console.log ('error in client get request ', error)
+    })
+  }
+
+
+
   render() {
     return (
       <div className="App">
@@ -9,8 +44,7 @@ class App extends Component {
           <h1 className="App-title">Gallery of my life</h1>
         </header>
         <br/>
-        <p>Gallery goes here</p>
-        <img src="images/goat_small.jpg"/>
+        <GalleryList photoList={this.state.photoList}/>
       </div>
     );
   }

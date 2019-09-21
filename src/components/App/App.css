@@ -1,6 +1,9 @@
 .App {
   text-align: center;
 }
+img {
+  width: 250px;
+}
 
 .App-header {
   background-color: #222;

@@ -10,9 +10,14 @@ class GalleryItem extends Component {
         })
         console.log(this.state)
     }
+
+    handleLikeClick = () => {
+        this.props.incrementLike(this.props.photo.id);
+    }
+
     render() {
         return (
-            <div key={this.props.photo.id}>
+            <div>
                 <div onClick={this.toggleImg} className="img_container">
                     {this.state.showCaption === true 
                         ? <h3>{this.props.photo.description}</h3> 
@@ -24,7 +29,7 @@ class GalleryItem extends Component {
                 </div>
                 <p>{this.props.photo.description}</p>
                 <p>Likes: {this.props.photo.likes}</p>
-                <button onClick={() => this.props.addLike(this.props.photo.id)}>Like</button>
+                <button onClick={this.handleLikeClick}>Like</button>
             </div>
         );
     }

@@ -22,26 +22,34 @@ class App extends Component {
   getImages = () => {
     axios.get('/gallery')
     .then((response) => {
+      // clear out this.state photo array
+      this.setState({
+        ...this.state,
+        photoList: []
+      })
+      // repopulate photo array with updated info from server
       response.data.forEach((photo) => {
         this.setState({
           ...this.state,
           photoList: [...this.state.photoList, photo]
         })
       })
-      console.log(this.state);
     })
     .catch((error) => {
       console.log ('error in client get request ', error)
     })
   }
 
-addLikes = (photoId) => {
-  this.state.photoList.forEach((photo) => {
-    if (photo.id === photoId){
-      photo.id++;
-    }
-  })
-}
+  incrementLike = (id) => {
+    axios.put(`/gallery/like/${id}`)
+      .then((response) => {
+        this.getImages();
+      })
+      .catch((error) => {
+        console.log('error in client put request ', error)
+      })
+  }
+
 
   render() {
     return (
@@ -52,7 +60,7 @@ addLikes = (photoId) => {
         <br/>
         <GalleryList 
           photoList={this.state.photoList}
-          addLikes={this.addLikes}
+          incrementLike={this.incrementLike}
         />
       </div>
     );

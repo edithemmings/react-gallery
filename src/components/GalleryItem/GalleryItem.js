@@ -17,8 +17,8 @@ class GalleryItem extends Component {
 
     render() {
         return (
-            <div>
-                <div onClick={this.toggleImg} className="img_container">
+            <div className="GalleryItem">
+                <div onClick={this.toggleImg} className="caption_container">
                     {this.state.showCaption === true 
                         ? <h3>{this.props.photo.description}</h3> 
                         : <img
@@ -27,7 +27,6 @@ class GalleryItem extends Component {
                         />
                     }
                 </div>
-                <p>{this.props.photo.description}</p>
                 <p>Likes: {this.props.photo.likes}</p>
                 <button onClick={this.handleLikeClick}>Like</button>
             </div>

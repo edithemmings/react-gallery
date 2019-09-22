@@ -2,10 +2,27 @@
   text-align: center;
 }
 img {
-  width: 150px;
+  width: 200px;
 }
-.img_container {
-  width: 150px;
+.caption_container {
+  width: 200px;
+  height: 131px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+h3 {
+  margin: 0;
+}
+.GalleryItem {
+  border: 2px solid red;
+}
+.GalleryList {
+    border: 2px solid blue;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: 100%;
 }
 
 .App-header {

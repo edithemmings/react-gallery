@@ -27,8 +27,8 @@ class GalleryItem extends Component {
                         />
                     }
                 </div>
-                <p>Likes: {this.props.photo.likes}</p>
                 <button onClick={this.handleLikeClick}>Like</button>
+                <p>👍 {this.props.photo.likes}</p>
             </div>
         );
     }

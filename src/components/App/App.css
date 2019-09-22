@@ -14,15 +14,24 @@ img {
 h3 {
   margin: 0;
 }
+p {
+  margin: 0 5px 5px 100px;
+  display: inline-block;
+}
+button {
+  border-radius: 3px;
+}
 .GalleryItem {
-  border: 2px solid red;
+  margin: 10px 0;
+  border: 1px solid lightgray;
+  background-color: white;
 }
 .GalleryList {
-    border: 2px solid blue;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
     width: 100%;
+    background-color: white;
 }
 
 .App-header {

@@ -2,42 +2,29 @@ import React, { Component } from 'react';
 
 class GalleryItem extends Component {
     state = {
-        is_showing_description: true,
-        viewImg: <img
-                src={this.props.photo.path}
-                alt={this.props.photo.description}
-            />,
-        viewDescription: <h3>{this.props.photo.description}</h3>,
-        currentDisplay: <img
-            src={this.props.photo.path}
-            alt={this.props.photo.description}
-        />
+        showCaption: false
     }
     toggleImg = () => {
-        if (this.state.is_showing_description){
-            this.setState({
-                ...this.state,
-                currentDisplay: this.state.viewImg,
-                is_showing_description: false
-            })
-        }
-        else if (!this.state.is_showing_description){
-            this.setState({
-                ...this.state,
-                currentDisplay: this.state.viewDescription,
-                is_showing_description: true
-            })
-        }
+        this.setState({
+            showCaption: !this.state.showCaption
+        })
         console.log(this.state)
     }
     render() {
         return (
             <div key={this.props.photo.id}>
                 <div onClick={this.toggleImg} className="img_container">
-                    {this.state.currentDisplay}
+                    {this.state.showCaption === true 
+                        ? <h3>{this.props.photo.description}</h3> 
+                        : <img
+                            src={this.props.photo.path}
+                            alt={this.props.photo.description}
+                        />
+                    }
                 </div>
                 <p>{this.props.photo.description}</p>
                 <p>Likes: {this.props.photo.likes}</p>
+                <button onClick={() => this.props.addLike(this.props.photo.id)}>Like</button>
             </div>
         );
     }

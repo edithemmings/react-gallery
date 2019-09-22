@@ -35,7 +35,13 @@ class App extends Component {
     })
   }
 
-
+addLikes = (photoId) => {
+  this.state.photoList.forEach((photo) => {
+    if (photo.id === photoId){
+      photo.id++;
+    }
+  })
+}
 
   render() {
     return (
@@ -44,7 +50,10 @@ class App extends Component {
           <h1 className="App-title">Gallery of my life</h1>
         </header>
         <br/>
-        <GalleryList photoList={this.state.photoList}/>
+        <GalleryList 
+          photoList={this.state.photoList}
+          addLikes={this.addLikes}
+        />
       </div>
     );
   }

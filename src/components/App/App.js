@@ -5,6 +5,9 @@ import axios from 'axios';
 
 class App extends Component {
 
+  //our state and all of our functions could be moved into GalleryList
+  //because it's only used by GalleryList and its children
+  
   state = {
     photoList: [],
     photo: {
@@ -45,6 +48,7 @@ class App extends Component {
       //    photoList: response.data
       // }) 
       // then I wouldn't have needed to clear it out first either
+      // this also makes it so that 'liking' doesn't reset all the pics to their images rather than captions
     })
     .catch((error) => {
       console.log ('error in client get request ', error)

@@ -18,6 +18,10 @@ class App extends Component {
   componentDidMount = () => {
     this.getImages();
   }
+  // can also write built in functions without arrows like:
+  // componentDidMount() {
+  //    this.getImages(); 
+  // }
 
   getImages = () => {
     axios.get('/gallery')
@@ -34,6 +38,13 @@ class App extends Component {
           photoList: [...this.state.photoList, photo]
         })
       })
+      // I didn't need to do a loop...
+      // could have just done:
+      // this.setState({
+      //    ...this.state,
+      //    photoList: response.data
+      // }) 
+      // then I wouldn't have needed to clear it out first either
     })
     .catch((error) => {
       console.log ('error in client get request ', error)

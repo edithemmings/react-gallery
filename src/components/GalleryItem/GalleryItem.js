@@ -13,6 +13,7 @@ class GalleryItem extends Component {
 
     handleLikeClick = () => {
         this.props.incrementLike(this.props.photo.id);
+        //could have done this below... see notes
     }
 
     render() {
@@ -28,6 +29,8 @@ class GalleryItem extends Component {
                     }
                 </div>
                 <button onClick={this.handleLikeClick}>Like</button>
+                {/* Could have written it in the onClick by passing (event) into an arrow function. See below. */}
+                {/* <button onClick={(event) => { this.props.incrementLike(this.props.photo.id) }}>Like</button>                 */}
                 <p>👍 {this.props.photo.likes}</p>
             </div>
         );
